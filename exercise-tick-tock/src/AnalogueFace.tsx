@@ -18,8 +18,9 @@ const weekday: Array<string> = [
   "Sat",
 ];
 
-const start = 270;
-const tick = 360 / 60; // degrees / hour
+const startDeg = 270;
+const tickIncrement = 360 / 60; // degrees / hour
+const hourIncrement = 5;
 
 const circle: React.CSSProperties = {
   width: "40vh",
@@ -69,9 +70,9 @@ const seconds: React.CSSProperties = {
 
 export function AnalogueFace() {
   const [time, setTime] = useState<Time>({
-    seconds: start,
-    minutes: start,
-    hour: start,
+    seconds: startDeg,
+    minutes: startDeg,
+    hour: startDeg,
     date: "01",
     day: "Mon",
   });
@@ -110,9 +111,9 @@ export function AnalogueFace() {
     setInterval(() => {
       let dateObj = new Date();
       setTime({
-        seconds: dateObj.getSeconds() * tick + start,
-        minutes: dateObj.getMinutes() * tick + start,
-        hour: dateObj.getHours() * tick + start,
+        seconds: dateObj.getSeconds() * tickIncrement + startDeg,
+        minutes: dateObj.getMinutes() * tickIncrement + startDeg,
+        hour: dateObj.getHours() * tickIncrement * hourIncrement + startDeg,
         date: dateObj.getDate().toString(),
         day: weekday[dateObj.getDay()],
       });
@@ -130,7 +131,7 @@ export function AnalogueFace() {
       </div>
       <div style={hourLine}>
         <div style={spacer}></div>
-        <div style={hour}></div>
+        <div style={hour}>{time.hour}</div>
       </div>
       <div style={secondsLine}>
         <div style={spacer}></div>

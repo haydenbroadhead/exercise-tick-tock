@@ -1,6 +1,6 @@
-import './App.css';
-import { DigitalFace } from './DigitalFace'
-import { AnalogueFace} from './AnalogueFace'
+import "./App.css";
+import { DigitalFace } from "./DigitalFace";
+import { AnalogueFace } from "./AnalogueFace";
 
 function App() {
   return (
@@ -9,7 +9,6 @@ function App() {
         <AnalogueFace></AnalogueFace>
         <DigitalFace></DigitalFace>
       </div>
-
     </div>
   );
 }

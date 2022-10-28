@@ -4,10 +4,10 @@ const container = {
   padding: "0.2em",
   backgroundColor: "white",
   color: "black",
-  margin: '1em',
+  margin: "1em",
   fontSize: "2em",
   border: "3px black solid",
-  borderRadius: "10px"
+  borderRadius: "10px",
 };
 
 interface Time {
@@ -17,15 +17,19 @@ interface Time {
 }
 
 export function DigitalFace() {
-  const [time, setTime] = useState<Time>({ hour: '0', minutes: '0', seconds: '0' });
+  const [time, setTime] = useState<Time>({
+    hour: "0",
+    minutes: "0",
+    seconds: "0",
+  });
 
   useEffect(() => {
     setInterval(() => {
       const date = new Date();
       const time: Time = {
-        hour:  date.getHours().toString().padStart(2,"0"),
-        minutes: date.getMinutes().toString().padStart(2,"0"),
-        seconds: date.getSeconds().toString().padStart(2,"0")
+        hour: date.getHours().toString().padStart(2, "0"),
+        minutes: date.getMinutes().toString().padStart(2, "0"),
+        seconds: date.getSeconds().toString().padStart(2, "0"),
       };
       setTime(time);
     }, 1000);

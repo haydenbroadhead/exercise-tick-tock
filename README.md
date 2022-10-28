@@ -1,4 +1,4 @@
-# Task:
+# Task
 
 Setup a project using a front-end framework of your choosing that will present a clock
 displaying the current time. The clock should display hours, minutes and seconds, at the
@@ -16,9 +16,8 @@ Considerations:
 - Bonus for any unit tests
 - Try not to look at the example code unless stuck.
 
----
+## Example
 
-Example:
 This one was built using StencilJS as a framework.
 
 Live: https://nathanberks21.gitlab.io/tick-tock-dial-clock/

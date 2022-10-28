@@ -10,6 +10,9 @@ interface Time {
 
 const weekday: Array<string> = ["Sun","Mon","Tues","Wed","Thu","Fri","Sat"];
 
+const start = 270;
+const tick = 360 / 60; // degrees / hour
+
 const circle: React.CSSProperties = {
   width: '50vh',
   height: '50vh',
@@ -27,17 +30,37 @@ const date: React.CSSProperties =  {
   position: 'absolute',
   fontSize: '0.8em',
   borderRadius: '4px',
-  top: '43%',
+  top: '45%',
   left: '70%',
   background: 'white',
   color: 'black',
-  padding: '3px',
+  padding: '1px 3px',
   border: '1px solid black'
 }
 
+const hour: React.CSSProperties = {
+  height: '3px',
+  width: '30%',
+  backgroundColor: 'black',
+  content: '',
+}
+
+const minutes: React.CSSProperties = {
+  height: '3px',
+  width: '45%',
+  backgroundColor: 'black',
+  content: '',
+}
+
+const seconds: React.CSSProperties = {
+  height: '2px',
+  width: '50%',
+  backgroundColor: 'red',
+  content: '',
+}
+
 export function AnalogueFace() {
-  // const [date,  setDate ] = useState(new Date());
-  const [time, setTime] = useState<Time>({ seconds: 270, minutes: 270, hour: 270, date: '01', day: 'Mon'})
+  const [time, setTime] = useState<Time>({ seconds: start, minutes: start, hour: start, date: '01', day: 'Mon'})
   
   const secondsLine: React.CSSProperties = {
     position: 'absolute',
@@ -47,13 +70,6 @@ export function AnalogueFace() {
     display: 'flex',
     justifyContent: 'flex-start',
     transform: `rotate(${time.seconds}deg)`
-  }
-
-  const seconds = {
-    height: '2px',
-    width: '50%',
-    backgroundColor: 'red',
-    content: '',
   }
 
   const minutesLine: React.CSSProperties = {
@@ -66,13 +82,6 @@ export function AnalogueFace() {
     transform: `rotate(${time.minutes}deg)`
   }
 
-  const minutes = {
-    height: '3px',
-    width: '45%',
-    backgroundColor: 'black',
-    content: '',
-  }
-
   const hourLine: React.CSSProperties = {
     position: 'absolute',
     top: '50%',
@@ -83,22 +92,13 @@ export function AnalogueFace() {
     transform: `rotate(${time.hour}deg)`
   }
 
-  const hour = {
-    height: '3px',
-    width: '30%',
-    backgroundColor: 'black',
-    content: '',
-  }
-
-
   useEffect(() => {
     setInterval(() => {
-      let dateObj = new Date
-      // console.log(time.seconds);
+      let dateObj = new Date();
       setTime({
-        seconds: (dateObj.getSeconds()*6 + 270),
-        minutes: (dateObj.getMinutes()*6 + 270),
-        hour: (dateObj.getHours()*6 + 270),
+        seconds: dateObj.getSeconds()* tick + start,
+        minutes: dateObj.getMinutes()* tick + start,
+        hour: dateObj.getHours()* tick + start,
         date: dateObj.getDate().toString(),
         day: weekday[dateObj.getDay()]
       })

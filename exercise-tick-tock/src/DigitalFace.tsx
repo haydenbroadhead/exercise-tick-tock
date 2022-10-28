@@ -5,7 +5,9 @@ const container = {
   backgroundColor: "white",
   color: "black",
   margin: '1em',
-  fontSize: "2em"
+  fontSize: "2em",
+  border: "3px black solid",
+  borderRadius: "4px"
 };
 
 interface Time {

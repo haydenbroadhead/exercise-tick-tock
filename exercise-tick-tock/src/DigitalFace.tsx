@@ -33,13 +33,8 @@ export function DigitalFace() {
 
   return (
     <div style={container}>
-      {/* <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button> */}
-
       <div>
-        {time.hour}:{time.minutes}:{time.seconds}
+        {time.hour}:{time.minutes}
       </div>
     </div>
   );

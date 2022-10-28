@@ -3,8 +3,12 @@ import React, { useState, useEffect } from 'react';
 interface Time {
   seconds: number,
   minutes: number,
-  hour: number
+  hour: number,
+  date: string,
+  day: string
 }
+
+const weekday: Array<string> = ["Sun","Mon","Tues","Wed","Thu","Fri","Sat"];
 
 const circle: React.CSSProperties = {
   width: '50vh',
@@ -19,9 +23,21 @@ const spacer = {
   width: '50%'
 }
 
+const date: React.CSSProperties =  { 
+  position: 'absolute',
+  fontSize: '0.8em',
+  borderRadius: '4px',
+  top: '43%',
+  left: '70%',
+  background: 'white',
+  color: 'black',
+  padding: '3px',
+  border: '1px solid black'
+}
+
 export function AnalogueFace() {
   // const [date,  setDate ] = useState(new Date());
-  const [time, setTime] = useState<Time>({ seconds: 270, minutes: 270, hour: 270})
+  const [time, setTime] = useState<Time>({ seconds: 270, minutes: 270, hour: 270, date: '01', day: 'Mon'})
   
   const secondsLine: React.CSSProperties = {
     position: 'absolute',
@@ -77,18 +93,23 @@ export function AnalogueFace() {
 
   useEffect(() => {
     setInterval(() => {
-      let date = new Date
+      let dateObj = new Date
       // console.log(time.seconds);
       setTime({
-        seconds: (date.getSeconds()*6 + 270),
-        minutes: (date.getMinutes()*6 + 270),
-        hour: (date.getHours()*6 + 270)
+        seconds: (dateObj.getSeconds()*6 + 270),
+        minutes: (dateObj.getMinutes()*6 + 270),
+        hour: (dateObj.getHours()*6 + 270),
+        date: dateObj.getDate().toString(),
+        day: weekday[dateObj.getDay()]
       })
     }, 1000);
   })
 
   return (
-    <div style={ circle }>
+    <div style={circle}>
+      <div style={date}> 
+        {time.day} {time.date}
+      </div>
       <div style={minutesLine}>
         <div style={spacer}></div>
         <div style={minutes}></div>
@@ -101,10 +122,6 @@ export function AnalogueFace() {
         <div style={spacer}></div>
         <div style={seconds}></div>
       </div>
-
-      
-
-
     </div>
   );
 }

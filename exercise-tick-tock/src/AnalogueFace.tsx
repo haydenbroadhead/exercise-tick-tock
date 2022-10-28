@@ -131,7 +131,7 @@ export function AnalogueFace() {
       </div>
       <div style={hourLine}>
         <div style={spacer}></div>
-        <div style={hour}>{time.hour}</div>
+        <div style={hour}></div>
       </div>
       <div style={secondsLine}>
         <div style={spacer}></div>

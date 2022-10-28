@@ -7,7 +7,7 @@ const container = {
   margin: '1em',
   fontSize: "2em",
   border: "3px black solid",
-  borderRadius: "4px"
+  borderRadius: "10px"
 };
 
 interface Time {
